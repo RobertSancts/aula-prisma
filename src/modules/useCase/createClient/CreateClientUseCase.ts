@@ -20,7 +20,19 @@ export class CreateClientUseCase {
                 },
             },
         });
-        console.log(clientExist);
+
+        if (clientExist){
+
+            throw new Error("Cliente ja cadastrado");
+            
+        }
+
+
+        
+        
+
+
+
 
         return clientExist
 

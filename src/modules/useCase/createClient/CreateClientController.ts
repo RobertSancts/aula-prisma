@@ -11,7 +11,7 @@ export class CreateClientController {
 
         const result = await createClientUseCase.execute(username)
 
-        return result
+        return response.json(result)
 
     }
 
