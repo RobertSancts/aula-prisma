@@ -11,12 +11,13 @@ export class CreateClientUseCase {
 
     async execute({ username, password }: ICreateClient) {
 
-        console.log("02 Entrou Criação de usuario");
-        const name = username
+        // const name = username
 
         const clientExist = await prisma.clients.findFirst({
             where: {
-                username: name,
+                username: {
+
+                }
             },
         });
 
@@ -37,7 +38,6 @@ export class CreateClientUseCase {
         })
 
 
-        console.log(" 03 Retonou o cliente gerado");
         return result
 
     }

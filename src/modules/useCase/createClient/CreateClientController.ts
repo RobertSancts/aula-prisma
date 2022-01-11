@@ -9,13 +9,7 @@ export class CreateClientController {
 
         const createClientUseCase = new CreateClientUseCase()
 
-        console.log("01 Entrou no controle");
-
-
         const result = await createClientUseCase.execute({ username, password })
-
-
-        console.log("04 enviando o Json", result);
 
         return response.json(result)
 
