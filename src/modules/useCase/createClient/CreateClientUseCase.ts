@@ -11,15 +11,22 @@ export class CreateClientUseCase {
 
     async execute({ username, password }: ICreateClient) {
 
-        // const name = username
+        const name = username
+        // por algum  motivo a chamada abaixo carrega o primeiro usuarios cadastrado
+        // console.log("02 dentro do metodo", username);
 
         const clientExist = await prisma.clients.findFirst({
             where: {
                 username: {
+                    mode: "insensitive",
+                    equals: name
 
                 }
             },
         });
+
+        // console.log("03 retorno do banco", clientExist?.username);
+
 
         if (clientExist) {
 
@@ -32,7 +39,7 @@ export class CreateClientUseCase {
 
         const result = await prisma.clients.create({
             data: {
-                username: name,
+                username,
                 password: password_hash
             }
         })
